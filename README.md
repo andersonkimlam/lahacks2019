@@ -1,4 +1,3 @@
 # lahacks2019
 
-
-okay
+- Repo containing all of our code for "InvestMate (?)"
