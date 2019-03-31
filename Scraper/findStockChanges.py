@@ -32,7 +32,14 @@ for i in range(len(myStocks)):
     else:
         sentences += ['']
 outfile = open('./results.txt', 'w')
-outfile.write(str(sentences))
+
+
+sentences_dict = {}
+for x in range(len(sentences)):
+    if sentences[x] != '':
+        sentences_dict[myStocks[x]] = sentences[x]
+
+outfile.write(str(sentences_dict))
 
 url_gainers = 'https://finance.yahoo.com/gainers?offset=0&count=10'
 page_gainers = requests.get(url_gainers)
@@ -112,7 +119,8 @@ for x in range(len(sentences)):
 
 sentiments_dict = {}
 for x in range(len(sentiment_scores)):
-    sentiments_dict[myStocks[x]] = sentiment_scores[x]
+    if sentiment_scores[x] != 0.0:
+        sentiments_dict[myStocks[x]] = sentiment_scores[x]
 
 outfile_stocks_gainers = open('./results_sentiments.txt', 'w')
 outfile_stocks_gainers.write(str(sentiments_dict))
