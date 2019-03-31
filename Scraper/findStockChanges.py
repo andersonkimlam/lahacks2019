@@ -106,6 +106,8 @@ from google.cloud.language import types
 # Instantiates a client
 client = language.LanguageServiceClient()
 
+
+sentiments__sentences_dict = {}
 for x in range(len(sentences)):
     # The text to analyze
     text = sentences[x]
@@ -119,8 +121,9 @@ for x in range(len(sentences)):
 
     for index, sentence in enumerate(sentiment.sentences):
         sentence_sentiment = sentence.sentiment.score
-        print('Sentence {} has a sentiment score of {}'.format(
-            sentence, sentence_sentiment))
+        sentiments__sentences_dict[str(sentence)] = str(sentence_sentiment)
+
+
 
 sentiments_dict = {}
 for x in range(len(sentiment_scores)):
@@ -128,4 +131,4 @@ for x in range(len(sentiment_scores)):
         sentiments_dict[myStocks[x]] = sentiment_scores[x]
 
 outfile_stocks_gainers = open('./results_sentiments.txt', 'w')
-outfile_stocks_gainers.write(str(sentiments_dict))
+outfile_stocks_gainers.write(str(sentiments_dict) + "\n" + str(sentiments__sentences_dict))
