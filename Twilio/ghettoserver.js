@@ -9,11 +9,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.post('/', (req, res) => {
   const twiml = new MessagingResponse();
+const msg = req.body.Body.toLowerCase();
   console.log(req.body.Body);
 
-  if (req.body.Body == 'hello') {
-    twiml.message('Hi!');
-  } else if (req.body.Body == 'bye') {
+  if (msg == 'dove') {
+    twiml.message('Hi! My name is Dovevest, your heavenly investment tool! ');
+  } else if (msg== 'bye') {
     twiml.message('Goodbye');
   } else {
     twiml.message(
