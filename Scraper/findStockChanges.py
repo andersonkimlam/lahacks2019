@@ -12,6 +12,7 @@ opener = urllib.request.build_opener()
 opener.addheaders = [('User-agent', 'Mozilla/5.0' )]
 
 url = ('https://finance.yahoo.com/news/10-best-stocks-invest-now-183522645.html')
+#https://investorplace.com/2019/02/the-10-best-cheap-stocks-to-buy-right-now/
 #url = ('https://finance.yahoo.com/news/top-stocks-buy-11-different-160641640.html')
 
 ourUrl = opener.open(url).read()
@@ -20,15 +21,16 @@ soup = BeautifulSoup(ourUrl, features = 'lxml')
 
 title = soup.title.text
 
-myStocks = ['AAPL', 'XOM', 'INTL', 'NATH', 'GOOG', 'FB', 'NFLX', 'NVDA', 'UPS', 'GE', 'GM', 'UTX']
+myStocks = ['AAPL', 'XOM', 'INTL', 'COF', 'NATH', 'GOOG', 'FB', 'NFLX', 'NVDA', 'UPS', 'GE', 'GM', 'UTX']
 
 sentences = []
 for i in range(len(myStocks)):
     pattern = re.compile(myStocks[i])
     body = soup.find('p', text = pattern)
     if body:
-
         sentences += [str(re.sub('[□\’]', '', body.text))]
+    else:
+        sentences += ['']
 outfile = open('./results.txt', 'w')
 outfile.write(str(sentences))
 
@@ -86,28 +88,31 @@ outfile_stocks_losers.write(str(losers_dict))
 
 
 
-#
-# sentiment_scores = []
-#
-# from google.cloud import language
-# from google.cloud.language import enums
-# from google.cloud.language import types
-#
-# # Instantiates a client
-# client = language.LanguageServiceClient()
-#
-# for x in range(len(sentences)):
-#     # The text to analyze
-#     text = sentences[x]
-#     document = types.Document(
-#     content=text,
-#     type=enums.Document.Type.PLAIN_TEXT)
-#
-# # Detects the sentiment of the text
-#     sentiment = client.analyze_sentiment(document=document).document_sentiment
-#     sentiment_scores += [sentiment.score]
-#
-#
-#
-# outfile_stocks_gainers = open('./results_sentiments.txt', 'w')
-# outfile_stocks_gainers.write(str(sentiment_scores))
+
+sentiment_scores = []
+
+from google.cloud import language
+from google.cloud.language import enums
+from google.cloud.language import types
+
+# Instantiates a client
+client = language.LanguageServiceClient()
+
+for x in range(len(sentences)):
+    # The text to analyze
+    text = sentences[x]
+    document = types.Document(
+    content=text,
+    type=enums.Document.Type.PLAIN_TEXT)
+
+# Detects the sentiment of the text
+    sentiment = client.analyze_sentiment(document=document).document_sentiment
+    sentiment_scores += [sentiment.score]
+
+
+sentiments_dict = {}
+for x in range(len(sentiment_scores)):
+    sentiments_dict[myStocks[x]] = sentiment_scores[x]
+
+outfile_stocks_gainers = open('./results_sentiments.txt', 'w')
+outfile_stocks_gainers.write(str(sentiments_dict))
