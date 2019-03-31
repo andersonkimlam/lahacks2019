@@ -12,7 +12,7 @@ app.post('/', (req, res) => {
 const msg = req.body.Body.toLowerCase();
   console.log(req.body.Body);
 
-  if (msg == 'hello') {
+  if (msg == 'dove') {
     twiml.message('Hi! My name is Dovevest, your heavenly investment tool! ');
   } else if (msg== 'bye') {
     twiml.message('Goodbye');
