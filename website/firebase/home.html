@@ -4,6 +4,7 @@
   <head>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/custom.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="logo2.png"/>
     <link
       href="https://fonts.googleapis.com/css?family=Montserrat:400,700"
       rel="stylesheet"
@@ -14,7 +15,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Bootstrap 101 Template</title>
+    <title>Dovevest</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <!-- Optional Bootstrap theme -->
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
@@ -27,7 +28,7 @@
   <body>
     <!-- ****************NAVIGATION!!!!!!!!!*****************-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#"><img src="logo2.png" height= 50><b>Dovevest</b></a>
+  <a class="navbar-brand" href="home.html"><img src="logo2.png" height= 50><b>Dovevest</b></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -41,7 +42,7 @@
         <a class="nav-link" href="rankings.html">Rankings <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="about.html">Purpose<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="purpose.html">Purpose<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="about.html">About<span class="sr-only">(current)</span></a>
@@ -83,27 +84,42 @@
   <div class="row">
     <div class="col-md-4">
       <span class="glyphicon glyphicon-cloud" aria-hidden="true"></span>
-      <h3>Cloud Computable</h3>
+      <h3>What is Dovevest?</h3>
       <p>
-        Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo,
-        tortor mauris condimentum nibh.
+        Dovevest is a website to improve investor experience and provide its customers with high-quality service.
+
       </p>
     </div>
     <div class="col-md-4">
       <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
-      <h3>Backwards Compatible</h3>
-      <p>Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. Lorem ipsum dolor.</p>
+      <h3>Why us?</h3>
+      <p>We connect everyday people with a convenient and simple approach to the path of stock and cryptocurrency investment. </p>
     </div>
     <div class="col-md-4">
       <span class="glyphicon glyphicon-console" aria-hidden="true"></span>
-      <h3>Twillio Text Updates</h3>
+      <h3>Twilio Text Updates</h3>
       <p>
          <b>(951) 420-6701</b>
          <br>
-        Text this [number] to subscribe to Dovevest, and get updates on which stocks to buyyyy.
+        Text "hello" to (951) 420-6701 to subscribe to Dovevest, and get updates on the best stocks available.
       </p>
+
     </div>
   </div>
 </div>
+<p> <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><center>$</center></p>
   </body>
 </html>
+<script src="https://www.gstatic.com/firebasejs/5.9.2/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBaN2qZKSbYEUoRVutGbwRory6RE4JEMro",
+    authDomain: "dovevest-bc8e1.firebaseapp.com",
+    databaseURL: "https://dovevest-bc8e1.firebaseio.com",
+    projectId: "dovevest-bc8e1",
+    storageBucket: "dovevest-bc8e1.appspot.com",
+    messagingSenderId: "584120651329"
+  };
+  firebase.initializeApp(config);
+</script>
