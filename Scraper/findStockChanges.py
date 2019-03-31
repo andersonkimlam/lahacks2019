@@ -11,7 +11,7 @@ import requests
 opener = urllib.request.build_opener()
 opener.addheaders = [('User-agent', 'Mozilla/5.0' )]
 
-url = ('https://investorplace.com/2019/02/the-10-best-cheap-stocks-to-buy-right-now/')
+url = ('https://finance.yahoo.com/news/10-best-stocks-invest-now-183522645.html')
 #https://investorplace.com/2019/02/the-10-best-cheap-stocks-to-buy-right-now/
 #https://finance.yahoo.com/news/10-best-stocks-invest-now-183522645.html
 #url = ('https://finance.yahoo.com/news/top-stocks-buy-11-different-160641640.html')
@@ -114,9 +114,13 @@ for x in range(len(sentences)):
     type=enums.Document.Type.PLAIN_TEXT)
 
 # Detects the sentiment of the text
-    sentiment = client.analyze_sentiment(document=document).document_sentiment
-    sentiment_scores += [sentiment.score]
+    sentiment = client.analyze_sentiment(document=document)
+    sentiment_scores += [sentiment.document_sentiment.score]
 
+    for index, sentence in enumerate(sentiment.sentences):
+        sentence_sentiment = sentence.sentiment.score
+        print('Sentence {} has a sentiment score of {}'.format(
+            index, sentence_sentiment))
 
 sentiments_dict = {}
 for x in range(len(sentiment_scores)):
