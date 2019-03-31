@@ -11,8 +11,8 @@ import requests
 opener = urllib.request.build_opener()
 opener.addheaders = [('User-agent', 'Mozilla/5.0' )]
 
-#url = ('https://finance.yahoo.com/news/10-best-stocks-invest-now-183522645.html')
 url = ('https://finance.yahoo.com/news/10-best-stocks-invest-now-183522645.html')
+#url = ('https://finance.yahoo.com/news/top-stocks-buy-11-different-160641640.html')
 
 ourUrl = opener.open(url).read()
 
@@ -20,7 +20,7 @@ soup = BeautifulSoup(ourUrl, features = 'lxml')
 
 title = soup.title.text
 
-myStocks = ['AAPL', 'XOM', 'INTL', 'NATH', 'GOOG', 'FB', 'NFLX', 'NVDA', 'UPS', 'GE', 'UTX']
+myStocks = ['AAPL', 'XOM', 'INTL', 'NATH', 'GOOG', 'FB', 'NFLX', 'NVDA', 'UPS', 'GE', 'GM', 'UTX']
 
 sentences = []
 for i in range(len(myStocks)):
@@ -83,3 +83,31 @@ for x in range(len(stocks_losers)):
 
 outfile_stocks_losers = open('./results_stocks_losers.txt', 'w')
 outfile_stocks_losers.write(str(losers_dict))
+
+
+
+#
+# sentiment_scores = []
+#
+# from google.cloud import language
+# from google.cloud.language import enums
+# from google.cloud.language import types
+#
+# # Instantiates a client
+# client = language.LanguageServiceClient()
+#
+# for x in range(len(sentences)):
+#     # The text to analyze
+#     text = sentences[x]
+#     document = types.Document(
+#     content=text,
+#     type=enums.Document.Type.PLAIN_TEXT)
+#
+# # Detects the sentiment of the text
+#     sentiment = client.analyze_sentiment(document=document).document_sentiment
+#     sentiment_scores += [sentiment.score]
+#
+#
+#
+# outfile_stocks_gainers = open('./results_sentiments.txt', 'w')
+# outfile_stocks_gainers.write(str(sentiment_scores))
