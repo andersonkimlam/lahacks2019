@@ -120,7 +120,7 @@ for x in range(len(sentences)):
     for index, sentence in enumerate(sentiment.sentences):
         sentence_sentiment = sentence.sentiment.score
         print('Sentence {} has a sentiment score of {}'.format(
-            index, sentence_sentiment))
+            sentence, sentence_sentiment))
 
 sentiments_dict = {}
 for x in range(len(sentiment_scores)):
