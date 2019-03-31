@@ -11,6 +11,7 @@ import requests
 opener = urllib.request.build_opener()
 opener.addheaders = [('User-agent', 'Mozilla/5.0' )]
 
+#url = ('https://finance.yahoo.com/news/10-best-stocks-invest-now-183522645.html')
 url = ('https://finance.yahoo.com/news/10-best-stocks-invest-now-183522645.html')
 
 ourUrl = opener.open(url).read()
@@ -21,15 +22,15 @@ title = soup.title.text
 
 myStocks = ['AAPL', 'XOM', 'INTL', 'NATH', 'GOOG', 'FB', 'NFLX', 'NVDA', 'UPS', 'GE', 'UTX']
 
-sentences = ""
+sentences = []
 for i in range(len(myStocks)):
     pattern = re.compile(myStocks[i])
     body = soup.find('p', text = pattern)
     if body:
 
-        sentences += str(re.sub('[□\’]', '', body.text)) + " \n\n"
-# outfile = open('./results.txt', 'w')
-# outfile.write(sentences)
+        sentences += [str(re.sub('[□\’]', '', body.text))]
+outfile = open('./results.txt', 'w')
+outfile.write(str(sentences))
 
 url_gainers = 'https://finance.yahoo.com/gainers?offset=0&count=10'
 page_gainers = requests.get(url_gainers)
