@@ -11,8 +11,9 @@ import requests
 opener = urllib.request.build_opener()
 opener.addheaders = [('User-agent', 'Mozilla/5.0' )]
 
-url = ('https://finance.yahoo.com/news/10-best-stocks-invest-now-183522645.html')
+url = ('https://investorplace.com/2019/02/the-10-best-cheap-stocks-to-buy-right-now/')
 #https://investorplace.com/2019/02/the-10-best-cheap-stocks-to-buy-right-now/
+#https://finance.yahoo.com/news/10-best-stocks-invest-now-183522645.html
 #url = ('https://finance.yahoo.com/news/top-stocks-buy-11-different-160641640.html')
 
 ourUrl = opener.open(url).read()
@@ -21,7 +22,7 @@ soup = BeautifulSoup(ourUrl, features = 'lxml')
 
 title = soup.title.text
 
-myStocks = ['AAPL', 'XOM', 'INTL', 'COF', 'NATH', 'GOOG', 'FB', 'NFLX', 'NVDA', 'UPS', 'GE', 'GM', 'UTX']
+myStocks = ['AAPL', 'XOM', 'INTL', 'COF', 'NATH', 'GOOG', 'FB', 'NFLX', 'NVDA', 'UPS', 'GE', 'GM', 'UTX', 'Capital One', 'CBS']
 
 sentences = []
 for i in range(len(myStocks)):
