@@ -1,4 +1,4 @@
-# Dovevestor
+# Dovevest
 A project created during the 2019 LA Hacks hackathon event.
 
 # Our Mission:
